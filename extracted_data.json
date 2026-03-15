@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-03-14T20:16:35.022318",
+  "items": {
+    "decisions": [
+      {
+        "id": "dec-001",
+        "title": "אחסון מקומי ב-localStorage",
+        "description": "אחסון נתונים מקומי בדפדפן בפורמט JSON",
+        "source_file": "קטלוג שירים אישי"
+      },
+      {
+        "id": "dec-002",
+        "title": "חוצה פלטפורמות Windows ו-macOS באמצעות electron-builder",
+        "description": "אריזה ל-Electron עבור Windows ו-macOS",
+        "source_file": "קטלוג שירים אישי"
+      },
+      {
+        "id": "dec-003",
+        "title": "HTML - מבנה ממשק המשתמש",
+        "description": "מבנה ממשק המשתמש",
+        "source_file": "קטלוג שירים אישי"
+      },
+      {
+        "id": "dec-004",
+        "title": "JavaScript Vanilla JS - ניהול נתונים, LocalStorage, סינון, אירועים, DOM דינמי",
+        "description": "ניהול נתונים, LocalStorage, סינון, אירועים, DOM דינמי",
+        "source_file": "קטלוג שירים אישי"
+      },
+      {
+        "id": "dec-005",
+        "title": "Intl API לוח עברי - הצגת תאריכים לפי הלוח העברי עם he-IL-u-ca-hebrew",
+        "description": "הצגת תאריכים לפי הלוח העברי עם he-IL-u-ca-hebrew",
+        "source_file": "קטלוג שירים אישי"
+      },
+      {
+        "id": "dec-006",
+        "title": "סדר הסינון: חיפוש חופשי, זמר, אהובים, חודש עברי, מצב רוח",
+        "description": "סדר הסינון: חיפוש חופשי, זמר, אהובים, חודש עברי, מצב רוח",
+        "source_file": "קטלוג שירים אישי"
+      },
+      {
+        "id": "dec-007",
+        "title": "מצבי רוח אפשריים: כללי, שמח, רגוע, מרגש, נוסטלגי, עצוב",
+        "description": "מצבי רוח אפשריים: כללי, שמח, רגוע, מרגש, נוסטלגי, עצוב",
+        "source_file": "קטלוג שירים אישי"
+      },
+      {
+        "id": "dec-008",
+        "title": "Jest עם jest-environment-jsdom",
+        "description": "בדיקת getSongs ו-saveSongs, getHebrewMonthAndYear, לוגיקת סינון",
+        "source_file": "קטלוג שירים אישי"
+      }
+    ],
+    "warnings": [
+      {
+        "id": "sec-001",
+        "title": "localStorage ב-Electron",
+        "description": "הבעיה: localStorage עלול להימחק בהתקנה מחדש",
+        "source_file": "Documentation"
+      },
+      {
+        "id": "sec-002",
+        "title": "אבטחה",
+        "description": "הבעיה: nodeIntegration true ו-contextIsolation false",
+        "source_file": "Documentation"
+      },
+      {
+        "id": "sec-003",
+        "title": "מיון תאריכים עבריים",
+        "description": "הבעיה: מיון אלפביתי של חודשים עבריים לא נותן סדר כרונולוגי",
+        "source_file": "Documentation"
+      },
+      {
+        "id": "sec-004",
+        "title": "כפילות מצב רוח בטופס עריכה",
+        "description": "הבעיה: handleEdit מציג מצב רוח נוכחי פעמיים",
+        "source_file": "Documentation"
+      }
+    ],
+    "features": [
+      {
+        "id": "dec-001",
+        "title": "ניהול שירים",
+        "description": "הוספה וניהול שירים - שם, זמר, קישור, מצב רוח, אהובים",
+        "source_file": "personalSongCatalog"
+      },
+      {
+        "id": "dec-002",
+        "title": "תאריכים בלוח העברי",
+        "description": "תאריכים בלוח העברי באמצעות Intl.DateTimeFormat",
+        "source_file": "personalSongCatalog"
+      },
+      {
+        "id": "dec-003",
+        "title": "סינון וחיפוש",
+        "description": "סינון וחיפוש לפי זמר, מצב רוח, אהובים, חודש עברי, חיפוש חופשי",
+        "source_file": "personalSongCatalog"
+      },
+      {
+        "id": "dec-004",
+        "title": "עריכה מוטמעת",
+        "description": "עריכה מוטמעת ללא טעינה מחדש",
+        "source_file": "personalSongCatalog"
+      },
+      {
+        "id": "dec-005",
+        "title": "אחסון מקומי",
+        "description": "אחסון מקומי ב-localStorage",
+        "source_file": "personalSongCatalog"
+      },
+      {
+        "id": "dec-006",
+        "title": "חוצה פלטפורמות",
+        "description": "חוצה פלטפורמות Windows ו-macOS באמצעות electron-builder",
+        "source_file": "personalSongCatalog"
+      },
+      {
+        "id": "dec-007",
+        "title": "ייצוא וייבוא קובץ JSON",
+        "description": "ייצוא וייבוא קובץ JSON",
+        "source_file": "planned-features"
+      },
+      {
+        "id": "dec-008",
+        "title": "פאנל סטטיסטיקות",
+        "description": "פאנל סטטיסטיקות: סך שירים, לפי זמר, לפי מצב רוח",
+        "source_file": "planned-features"
+      },
+      {
+        "id": "dec-009",
+        "title": "קיצורי מקלדת",
+        "description": "קיצורי מקלדת: Ctrl+F חיפוש, Escape ניקוי סינונים, Ctrl+N הוספת שיר",
+        "source_file": "planned-features"
+      },
+      {
+        "id": "dec-010",
+        "title": "סנכרון ענן",
+        "description": "סנכרון ענן אופציונלי עם safeStorage",
+        "source_file": "planned-features"
+      },
+      {
+        "id": "dec-011",
+        "title": "מערכת תגיות מרובות",
+        "description": "מערכת תגיות מרובות במקום מצב רוח יחיד",
+        "source_file": "planned-features"
+      },
+      {
+        "id": "dec-012",
+        "title": "הערות לשיר",
+        "description": "הערות לשיר",
+        "source_file": "planned-features"
+      },
+      {
+        "id": "dec-013",
+        "title": "בדיקות מתוכננות",
+        "description": "בדיקות מתוכננות: Jest עם jest-environment-jsdom, בדיקת getSongs ו-saveSongs, בדיקת getHebrewMonthAndYear, בדיקת לוגיקת סינון",
+        "source_file": "planned-tests"
+      },
+      {
+        "id": "dec-014",
+        "title": "סינון רב-ציר",
+        "description": "סינון לפי כל ציר בנפרד, שילוב שני סינונים",
+        "source_file": "qa-list"
+      },
+      {
+        "id": "dec-015",
+        "title": "חיפוש חופשי",
+        "description": "חיפוש חופשי חלקי ולא תלוי רישיות",
+        "source_file": "qa-list"
+      },
+      {
+        "id": "dec-016",
+        "title": "עריכת שיר",
+        "description": "עריכת שיר ובדיקת שמירה",
+        "source_file": "qa-list"
+      },
+      {
+        "id": "dec-017",
+        "title": "מחיקת שיר",
+        "description": "מחיקת שיר ובדיקת עדכון פילטר",
+        "source_file": "qa-list"
+      }
+    ]
+  }
+}
