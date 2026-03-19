@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>RAG Agent — תרשים זרימה</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  h1 {
+    font-size: 24px;
+    color: #1a237e;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .subtitle {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    max-width: 700px;
+  }
+  .box {
+    border-radius: 12px;
+    padding: 16px 28px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    min-width: 260px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    position: relative;
+  }
+  .box .sub {
+    font-size: 12px;
+    font-weight: normal;
+    opacity: 0.85;
+    margin-top: 4px;
+  }
+  .user    { background: #1565C0; }
+  .step    { background: #283593; }
+  .valid   { background: #4527A0; }
+  .router  { background: #6A1B9A; }
+  .json    { background: #00695C; }
+  .pine    { background: #00695C; }
+  .gen     { background: #E65100; }
+  .answer  { background: #1B5E20; }
+  .stop    { background: #B71C1C; }
+
+  .arrow {
+    width: 2px;
+    height: 28px;
+    background: #90A4AE;
+    position: relative;
+  }
+  .arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 10px solid #90A4AE;
+  }
+
+  .split-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+  }
+  .split-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .split-label {
+    font-size: 12px;
+    color: #555;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin-bottom: 6px;
+    white-space: nowrap;
+  }
+
+  .hline {
+    width: 340px;
+    height: 2px;
+    background: #90A4AE;
+    margin: 0 auto;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+    justify-content: center;
+    max-width: 700px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #333;
+  }
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+  }
+
+  .validation-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+  }
+  .side-stop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .side-label {
+    font-size: 11px;
+    color: #B71C1C;
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>🤖 RAG Agent — תרשים זרימה</h1>
+<p class="subtitle">Event-Driven Workflow | LlamaIndex + Cohere + Pinecone</p>
+
+<div class="flow">
+
+  <!-- User -->
+  <div class="box user">
+    👤 שאלת משתמש
+    <div class="sub">קלט טקסט חופשי בעברית</div>
+  </div>
+  <div class="arrow"></div>
+
+  <!-- Retrieve Step -->
+  <div class="box step">
+    ⚙️ Retrieve Step
+    <div class="sub">שלב 1 — קבלת השאלה</div>
+  </div>
+  <div class="arrow"></div>
+
+  <!-- Validation -->
+  <div class="validation-row">
+    <div class="flow" style="align-items:center; gap:0;">
+      <div class="box valid" style="min-width:220px;">
+        🔍 ולידציה
+        <div class="sub">קצרה מדי? שיחה בלבד?</div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:0; margin-top:-10px;">
+      <div class="side-label">← כן → עצור</div>
+      <div class="box stop" style="min-width:160px; font-size:13px;">
+        🛑 StopEvent
+        <div class="sub">"השאלה קצרה מדי" / "אני סייען טכני בלבד"</div>
+      </div>
+    </div>
+  </div>
+  <div class="arrow"></div>
+
+  <!-- Router -->
+  <div class="box router">
+    🔀 Router
+    <div class="sub">מחליט: structured או semantic?</div>
+  </div>
+
+  <!-- Horizontal split -->
+  <div style="display:flex; flex-direction:column; align-items:center; width:100%; gap:0;">
+    <div style="display:flex; width:340px; justify-content:space-between; height:28px; align-items:flex-end;">
+      <div style="width:2px; height:28px; background:#90A4AE; margin-right:60px;"></div>
+      <div style="width:2px; height:28px; background:#90A4AE; margin-left:60px;"></div>
+    </div>
+    <div style="width:340px; height:2px; background:#90A4AE;"></div>
+    <div style="display:flex; width:340px; justify-content:space-between; align-items:flex-start;">
+      <div style="width:2px; height:28px; background:#90A4AE; margin-right:60px; position:relative;">
+        <div style="position:absolute; bottom:-1px; left:50%; transform:translateX(-50%); border-left:7px solid transparent; border-right:7px solid transparent; border-top:10px solid #90A4AE;"></div>
+      </div>
+      <div style="width:2px; height:28px; background:#90A4AE; margin-left:60px; position:relative;">
+        <div style="position:absolute; bottom:-1px; left:50%; transform:translateX(-50%); border-left:7px solid transparent; border-right:7px solid transparent; border-top:10px solid #90A4AE;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two branches -->
+  <div class="split-row">
+    <div class="split-col">
+      <div class="split-label">📋 שאלה רשימתית</div>
+      <div class="box json" style="min-width:200px;">
+        🗂️ JSON שליפה
+        <div class="sub">extracted_data.json</div>
+      </div>
+      <div class="arrow"></div>
+      <div style="font-size:11px; color:#555; background:white; border:1px solid #ccc; border-radius:8px; padding:4px 10px; text-align:center; max-width:200px;">
+        החלטות / אזהרות / תכונות
+      </div>
+    </div>
+
+    <div class="split-col">
+      <div class="split-label">🔍 שאלת הסבר</div>
+      <div class="box pine" style="min-width:200px;">
+        🌲 Pinecone חיפוש
+        <div class="sub">Vector Similarity Search</div>
+      </div>
+      <div class="arrow"></div>
+      <div style="font-size:11px; color:#555; background:white; border:1px solid #ccc; border-radius:8px; padding:4px 10px; text-align:center; max-width:200px;">
+        Top-3 chunks רלוונטיים
+      </div>
+    </div>
+  </div>
+
+  <!-- Merge back -->
+  <div style="display:flex; flex-direction:column; align-items:center; width:100%; gap:0;">
+    <div style="display:flex; width:340px; justify-content:space-between; height:28px; align-items:flex-end;">
+      <div style="width:2px; height:28px; background:#90A4AE; margin-right:60px;"></div>
+      <div style="width:2px; height:28px; background:#90A4AE; margin-left:60px;"></div>
+    </div>
+    <div style="width:340px; height:2px; background:#90A4AE;"></div>
+    <div style="width:2px; height:28px; background:#90A4AE; position:relative;">
+      <div style="position:absolute; bottom:-1px; left:50%; transform:translateX(-50%); border-left:7px solid transparent; border-right:7px solid transparent; border-top:10px solid #90A4AE;"></div>
+    </div>
+  </div>
+
+  <!-- Generate Step -->
+  <div class="box gen">
+    ✍️ Generate Step
+    <div class="sub">שלב 2 — ניסוח תשובה סופית</div>
+  </div>
+  <div class="arrow"></div>
+
+  <!-- Cohere LLM -->
+  <div class="box" style="background:#BF360C; min-width:260px;">
+    🧠 Cohere LLM
+    <div class="sub">command-r7b-12-2024 | max_tokens: 200</div>
+  </div>
+  <div class="arrow"></div>
+
+  <!-- Answer -->
+  <div class="box answer">
+    ✅ תשובה למשתמש
+    <div class="sub">בעברית בלבד | ממשק Gradio</div>
+  </div>
+
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#1565C0;"></div> קלט משתמש</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#283593;"></div> Steps של Workflow</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#4527A0;"></div> ולידציה</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#6A1B9A;"></div> Router</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#00695C;"></div> מקורות מידע</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#E65100;"></div> יצירת תשובה</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#B71C1C;"></div> עצירה / שגיאה</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#1B5E20;"></div> פלט סופי</div>
+</div>
+
+</body>
+</html>
